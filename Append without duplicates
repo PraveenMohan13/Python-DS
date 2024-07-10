@@ -1,0 +1,130 @@
+Append without duplicates
+John is a teacher, he has assigned a roll number to each student in ascending order. Every time he assigns a number to a student, he wants to check whether the number is already assigned to any other student. This is to avoid duplicates in the roll number. Add a number to the list only if the number is not previously present. Implement this concept using a Linked List. If the list is empty, print "List is empty".
+
+
+
+Format:
+
+Input:
+
+The input consists of a list of integers. The negative value in the list indicates the end.
+
+Output:
+
+The output should be the list of numbers in separate lines.
+
+
+
+Example:
+
+Input:
+
+11
+
+22
+
+33
+
+22
+
+33
+
+44
+
+-77
+
+Output:
+
+11
+
+22
+
+33
+
+44
+=========================================================================
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class ll():
+  def __init__(self):
+    self.head=None
+    self.temp=None
+  def append(self,data):
+    nn=node(data)
+    if(self.head==None):
+      self.head=nn
+      self.temp=nn
+    else:
+      self.temp.next=nn
+      self.temp=nn
+  def dis(self):
+    if(self.head==None):
+      print("List is empty")
+      return
+    self.temp=self.head
+    while self.temp:
+      print(self.temp.data)
+      self.temp=self.temp.next
+  def dup(self):
+    p1=None  #safty previous
+    p2=None #check
+    t=self.head #take
+    while(t!=None):
+      p1 = t
+      p2 = t.next
+      while(p2!=None):
+        if(t.data == p2.data):
+          p1.next = p2.next
+          p2.next = None
+          p2=p1.next
+        else:
+          p1 = p1.next
+          p2 = p2.next
+      t = t.next
+l=ll() 
+while True:
+  i=int(input())
+  if(i<0):
+    break
+  l.append(i)
+l.dup()
+l.dis()
+==============================================================================
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class ll():
+  def __init__(self):
+    self.head=None
+    self.temp=None
+  def append(self,data):
+    nn=node(data)
+    if(self.head==None):
+      self.head=nn
+      self.temp=nn
+    else:
+      x =self.head
+      while(x!=None):
+        if(x.data == data):
+          return
+        x = x.next
+      self.temp.next=nn
+      self.temp=nn
+  def dis(self):
+    if(self.head==None):
+      print("List is empty")
+      return
+    self.temp=self.head
+    while self.temp:
+      print(self.temp.data)
+      self.temp=self.temp.next
+l=ll()
+while True:
+  i=int(input())
+  if(i<0):
+    break
+  l.append(i)
+l.dis()
