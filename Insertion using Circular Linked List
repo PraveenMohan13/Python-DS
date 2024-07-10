@@ -1,0 +1,63 @@
+Insertion using Circular Linked List
+Write a program to create a Circular Linked List. Which can store and display N number of data using dynamic memory allocation.
+
+Hint: 1 indicates the Insertion of data and 0 indicates to display the inserted data.
+
+
+
+Example:
+
+Input:
+
+10
+
+1
+
+20
+
+1
+
+30
+
+0
+
+Output:
+
+10 20 30
+===============================================================================================
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class ll():
+  def __init__(self):
+    self.head=None
+    self.temp=None
+  def append(self,data):
+    newnode=node(data)
+    if(self.head==None):
+      self.head=newnode
+      self.temp=newnode
+      newnode.next = self.head
+    else:
+      self.temp.next=newnode
+      self.temp=newnode
+      newnode.next = self.head
+  def dis(self):
+    if(self.head==None):
+      print("List is empty")
+      return
+    print(self.head.data,end=" ")
+    self.temp=self.head.next
+    while self.temp!=self.head:
+      print(self.temp.data,end=" ")
+      self.temp=self.temp.next
+l = ll()
+while(True):
+  n = int(input())
+  c = int(input())
+  l.append(n)
+  if(c==0):
+    l.dis()
+    break
+ 
