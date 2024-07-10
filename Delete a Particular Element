@@ -1,0 +1,48 @@
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class ll():
+  def __init__(self):
+    self.head=None
+    self.temp=None
+  def append(self,data):
+    nn=node(data)
+    if(self.head==None):
+      self.head=nn
+      self.temp=nn
+    else:
+      self.temp.next=nn
+      self.temp=nn
+  def dell(self,e):
+    if(self.head==None):
+      print("List Empty")
+      return
+    if(self.head.data==e):
+      self.head = self.head.next
+      return
+    t=self.head
+    while(t.next!=None):
+      if(t.next.data == e):
+        t.next = t.next.next
+      else:
+        t = t.next
+  def dis(self):
+    if(self.head==None):
+      print("List is empty")
+      return
+    self.temp=self.head
+    while self.temp:
+      print(self.temp.data)
+      self.temp=self.temp.next
+if __name__=='__main__':
+  l=ll()
+  c=0
+  while True:
+    i=int(input())
+    if(i<0):
+      break
+    l.append(i)
+e = int(input())
+l.dell(e)
+l.dis()
