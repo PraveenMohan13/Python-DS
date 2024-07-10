@@ -16,6 +16,7 @@ class ll():
       self.head.pre = newnode
     else:
       self.temp.next=newnode
+      newnode.pre = self.temp
       self.temp=newnode
       newnode.next=self.head
       self.head.pre = newnode
