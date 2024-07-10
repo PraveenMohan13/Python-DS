@@ -1,0 +1,56 @@
+Write a program to find the maximum number in a list.
+
+
+
+Example:
+
+Input:
+
+1
+
+7
+
+2
+
+5
+
+-1
+
+Output:
+
+7
+==========================================================================
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class ll():
+  def __init__(self):
+    self.head=None
+    self.temp=None
+  def append(self,data):
+    nn=node(data)
+    if(self.head==None):
+      self.head=nn
+      self.temp=nn
+    else:
+      self.temp.next=nn
+      self.temp=nn
+  def max(self):
+    if(self.head==None):
+      print("List is empty")
+      return
+    t=self.head
+    max=0
+    while t:
+      if(t.data > max):
+        max=t.data
+      t=t.next
+    return max
+l=ll()
+while True:
+  i=int(input())
+  if(i<0):
+    break
+  l.append(i)
+print(l.max())
