@@ -7,7 +7,6 @@ The diameter of a tree (sometimes called the width) is the number of nodes on th
 
 The diagram below shows two trees each with diameter nine, the leaves that form the ends of the longest path are shaded (note that there is more than one path in each tree of length nine, but no path longer than nine nodes). 
 
-<img src="https://www.example.com/images/dinosaur.jpg" alt="Dinosaur" />
 
 Input Format :
 
@@ -40,3 +39,44 @@ Explanation:
 
 The tree is as shown below, for this tree the diameter is 4.
 ======================================================================================
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.left=None
+    self.right=None
+def append(l):
+  q =[]
+  if(l[0]!=-1):
+    root = node(l[0])
+    q.append(root)
+  i = 1
+  while(True):
+    T = q.pop(0)
+    if(i < len(l)-1):
+      nn = node(l[i])
+      T.left = nn
+      q.append(nn)
+    i += 1
+    if(i < len(l)-1):
+      nn = node(l[i])
+      T.right = nn
+      q.append(nn)
+    else:
+      break 
+    i +=1
+  return root
+def hight(root):
+  if root == None:
+    return 0
+  return (1 + max(hight(root.left) , hight(root.right)))
+def deli(root):
+  if root == None:
+    return 0
+  lh = hight(root.left)
+  rh = hight(root.right)
+  ld = deli(root.left)
+  rd = deli(root.right)
+  return max(lh + rh ,max(ld,rd))
+l = [int(i) for i in input().split()]
+root = append(l)
+print(deli(root)+1)
