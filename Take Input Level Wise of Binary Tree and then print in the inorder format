@@ -1,0 +1,126 @@
+Take Input Level Wise of Binary Tree and then print in the inorder format
+
+
+
+Input Format
+
+No
+
+Constraints
+
+No
+
+Output Format
+
+Inorder traversal of Binary tree
+
+Sample Input 0
+
+8 3 10 1 6 -1 14 -1 -1 4 7 13 -1 -1 -1 -1 -1 -1 -1
+Sample Output 0
+
+1 3 4 6 7 8 10 13 14
+Sample Input 1
+
+1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+Sample Output 1
+
+4 2 5 1 6 3 7
+===============================================================================
+class node:
+  def __init__(self,data):
+    self.data = data
+    self.left = None
+    self.right = None
+def ins(l):
+    q = []
+    if(l[0] != -1):
+      root = node(l[0])
+      q.append(root)
+    i = 1
+    while(q):
+      T = q.pop(0)
+      d = l[i]
+      if(d != -1):
+        nn = node(d)
+        T.left = nn
+        q.append(nn)
+      i += 1
+      d = l[i]
+      if (d != -1):
+        nn = node(d)
+        T.right = nn
+        q.append(nn)
+      i += 1
+    return root
+def inorder(root):
+    stack = []
+    c = root
+    while True:
+      if(c != None):
+        stack.append(c)
+        c = c.left
+      elif(stack):
+        c = stack.pop()
+        print(c.data,end = " ")
+        c = c.right
+      else:
+        break
+    print()
+def preorder(root):
+    if(root == None):
+        return
+    stack =[]
+    c = root
+    while(len(stack) or c!=None):
+        while(c):
+            print(c.data,end=" ")
+            if(c.right != None):
+                stack.append(c.right)
+            c = c.left
+        if(len(stack)>0):
+            c=stack.pop()
+    print()
+def postorder(root):
+    if(root == None):
+        return
+    s1=[]
+    s2=[]
+    s1.append(root)
+    while(s1):
+        t = s1.pop()
+        s2.append(t)
+        if(t.left != None):
+            s1.append(t.left)
+        if(t.right != None):
+            s1.append(t.right)
+    while(s2):
+        t = s2.pop()
+        print(t.data,end=" ")
+l = [int(i) for i in input().split()]
+root = ins(l)
+inorder(root)
+preorder(root)
+postorder(root)
+====================Recursion==================================
+========================in========================================
+def fun(node):
+    if node is None:
+        return
+    fun(node.left)
+    print(node.data, end=' ')
+    fun(node.right)
+==========================pre======================================
+def fun(node):
+    if node is None:
+        return
+    print(node.data, end=' ')
+    fun(node.left)
+    fun(node.right)
+=============================post===================================
+def fun(node):
+    if node is None:
+        return
+    fun(node.left)
+    fun(node.right)
+    print(node.data, end=' ')
