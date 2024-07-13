@@ -1,0 +1,87 @@
+You are given the root node of a binary tree.Count the number of nodes present.
+
+
+
+Input Format
+
+The first and the only line of input will contain the node data, all separated by a single space. Since -1 is used as an indication whether the left or right node data exist for root, it will not be a part of the node data.
+Constraints
+
+1 <= N <= 10^6
+Where N is the total number of nodes in the binary tree.
+Time Limit: 1 sec
+Output Format
+
+The only line of output prints the number of nodes in Binary Tree
+
+Sample Input 0
+
+1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+Sample Output 0
+
+7
+Sample Input 1
+
+5 6 10 2 3 -1 -1 -1 -1 -1 9 -1 -1
+Sample Output 1
+
+6
+
+=========================================
+class node:
+  def __init__(self,data):
+    self.data = data
+    self.left = None
+    self.right = None
+def ins(l):
+    q = []
+    if(l[0] != -1):
+      root = node(l[0])
+      q.append(root)
+    i = 1
+    while(q):
+      T = q.pop(0)
+      d = l[i]
+      if(d != -1):
+        nn = node(d)
+        T.left = nn
+        q.append(nn)
+      i += 1
+      d = l[i]
+      if (d != -1):
+        nn = node(d)
+        T.right = nn
+        q.append(nn)
+      i += 1
+    return root
+def count(root):
+  if(root == None):
+    return 0
+  return 1 + count(root.left) + count(root.right)
+l = [int(i) for i in input().split()]
+root = ins(l)
+print(count(root))
+============================iterative========================================================
+
+def count1(root):
+    count = 0
+    current = root
+ 
+    while current:
+        if current.left is None:
+            count += 1
+            current = current.right
+        else:
+            prev = current.left
+            while prev.right and prev.right != current:
+                prev = prev.right
+ 
+            if prev.right is None:
+                prev.right = current
+                current = current.left
+            else:
+                prev.right = None
+                count += 1
+                current = current.right
+ 
+    return count
