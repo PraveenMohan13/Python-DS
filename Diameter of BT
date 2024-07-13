@@ -1,0 +1,42 @@
+Diameter of a Binary Tree
+
+
+Write a program to find the diameter of a binary tree.
+
+The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes.
+
+The diagram below shows two trees each with diameter nine, the leaves that form the ends of the longest path are shaded (note that there is more than one path in each tree of length nine, but no path longer than nine nodes). 
+
+<img src="https://www.example.com/images/dinosaur.jpg" alt="Dinosaur" />
+
+Input Format :
+
+The tree is given as space separated integers indicating nodes of tree.
+
+Every (2*i)th element of the integers denotes left child of node i.
+
+Every (2*i +1)th element of the integers denotes right child of node i.
+
+Stop the tree on encountering -1.
+
+
+Output Format :
+
+Print the diameter of the tree.
+
+
+
+Example 1:
+
+Input:
+
+1 2 3 4 5 -1
+
+Output:
+
+4
+
+Explanation:
+
+The tree is as shown below, for this tree the diameter is 4.
+======================================================================================
