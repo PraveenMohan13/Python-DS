@@ -1,0 +1,63 @@
+Given a Binary Search Tree and two integers k1 and k2, find and print the elements which are in range k1 and k2 (both inclusive).
+
+Print the elements in increasing order.
+Input Format
+
+First line array size
+Second line array elements
+Third line k1 value
+Fourth line k2 value
+Constraints
+
+Time :- 1 Sec
+Output Format
+
+The first and only line of output prints the elements which are in range k1 and k2 (both inclusive). Print the elements in increasing order.
+Sample Input 0
+
+6
+8 5 10 2 6 7
+6
+10
+Sample Output 0
+
+6 7 8 10
+Sample Input 1
+
+1
+1
+2
+5
+=====================================================================
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def append(root, data):
+    if root is None:
+        nn = Node(data)
+        return nn
+    else:
+        if data > root.data:
+            root.right = append(root.right, data)
+        else:
+            root.left = append(root.left, data)
+    return root
+def find(root,s,e):
+  if root == None:
+    return
+  if(s<root.data):
+    find(root.left,s,e)
+  if(s<=root.data and e>=root.data):
+    print(root.data,end=" ")
+  find(root.right,s,e)
+root = None
+n=int(input())
+l=[int(i) for i in input().split()]
+s=int(input())
+e=int(input())
+for i in l:
+  root=append(root,i)
+find(root,s,e)
