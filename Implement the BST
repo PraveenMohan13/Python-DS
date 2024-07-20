@@ -57,7 +57,7 @@ class Node:
         self.left = None
         self.right = None
 
-class Solution:
+class ll:
     def ins(self, data, root):
         if root is None:
             new_node = Node(data)
@@ -114,24 +114,24 @@ class Solution:
         else:
             return self.search(data, root.left)
 
-if __name__ == "__main__":
-    o = Solution()
-    root = None
-    q = int(input())
-    
-    while q > 0:
-        choice = int(input())
-        
-        if choice == 1:
-            data = int(input())
-            root = o.ins(data, root)
-        elif choice == 2:
-            data = int(input())
-            root = o.remove(data, root)
-        elif choice == 3:
-            data = int(input())
-            print(o.search(data, root))
-        else:
-            o.print_tree(root)
-        
-        q -= 1
+o = ll()
+root = None
+q = int(input())
+while q > 0:
+  choice = [int(i) for i in input().split()]
+  if choice[0] == 1:
+    data =choice[1]
+    root = o.ins(data, root)
+  elif choice[0] == 2:
+    data =choice[1]
+    root = o.remove(data, root)
+  elif choice[0] == 3:
+    data =choice[1]
+    x=o.search(data, root)
+    if x:
+      print("true")
+    else:
+      print("false")
+  else:
+    o.print_tree(root)
+  q -= 1
