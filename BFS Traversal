@@ -1,0 +1,63 @@
+BFS Traversal
+Write a program to implement the BFS traversal of a graph.
+
+
+
+Example:
+
+Input:
+
+4
+
+0 1
+
+0 2
+
+1 2
+
+2 0
+
+2 3
+
+3 3
+
+-1 -1
+
+Output:
+
+BFS : 0 1 2 3 
+
+Note:
+
+Start the vertex from 0. To stop reading, read the edge as -1 -1. Start the BFS traversal from vertex 0.
+
+If the number of vertices is 0 then print "Graph doesn't exist".
+=========================================================================================================================================================
+from collections import deque
+def bfs(sv,l,n):
+    visited = [False] * len(l)
+    q = deque()
+    visited[sv] = True
+    q.append(sv)
+    
+    while q:
+        t = q.popleft()
+        print(t, end=" ")
+        
+        for i in range(len(l[t])):
+            if l[t][i] == 1 and not visited[i]:
+                visited[i] = True
+                q.append(i)
+n=int(input())
+if n == 0:
+  print("Graph doesn't exist")
+  exit()
+l = [[0 for i in range(n)] for i in range(n)]
+while(True):
+  fv, sv = map(int, input().split())
+  if(fv ==-1 and sv==-1):
+    break
+  l[fv][sv] = 1
+  l[sv][fv] = 1
+print("BFS : ",end="")
+bfs(0,l,n)
