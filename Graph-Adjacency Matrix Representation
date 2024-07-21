@@ -1,0 +1,116 @@
+Graph-Adjacency Matrix Representation
+Write a program to implement a graph using an adjacency Matrix.
+
+
+
+Example:
+
+Input:
+
+4
+
+4
+
+yes
+
+1 2 6
+
+2 3 7
+
+3 4 8
+
+2 4 9
+
+Output:
+
+Please enter the number of nodes in the graph
+
+Please enter the number of edges in the graph
+
+Is the graph directed
+
+Adjacency Matrix Representation:
+
+0 0 0 0
+
+0 0 0 0
+
+0 0 0 0
+
+0 0 0 0
+
+Enter the start node, end node and weight of edge no 1
+
+Enter the start node, end node and weight of edge no 2
+
+Enter the start node, end node and weight of edge no 3
+
+Enter the start node, end node and weight of edge no 4
+
+Adjacency Matrix Representation:
+
+0 6 0 0
+
+0 0 7 9
+
+0 0 0 8
+
+0 0 0 0
+
+
+Case 1
+Input (stdin)
+4
+4
+yes
+1 2 6
+2 3 7
+3 4 8
+2 4 9
+
+Output (stdout)
+Please enter the number of nodes in the graph
+Please enter the number of edges in the graph
+Is the graph directed
+Adjacency Matrix Representation:
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+Enter the start node, end node and weight of edge no 1
+Enter the start node, end node and weight of edge no 2
+Enter the start node, end node and weight of edge no 3
+Enter the start node, end node and weight of edge no 4
+Adjacency Matrix Representation:
+0 6 0 0
+0 0 7 9
+0 0 0 8
+0 0 0 0
+====================================================================
+nd=int(input("Please enter the number of nodes in the graph\n"))
+ed=int(input("Please enter the number of edges in the graph\n"))
+#nd = Num of Nodes
+#ed = Num of Edges
+c=input("Is the graph directed\n")
+l=[]
+print("Adjacency Matrix Representation:")
+for i in range(nd):
+  l1=[0]*ed
+  l.append(l1)
+for i in range(nd):
+  for j in range(ed):
+    print(l[i][j],end=" ")
+  print()
+for i in range(ed):
+  s,e,w = input("Enter the start node, end node and weight of edge no "+str(i+1)+"\n").split()
+  if(c=="yes"):
+    l[int(s)-1][int(e)-1]=int(w)
+  else:
+    l[int(s)-1][int(e)-1]=int(w)
+    l[int(e)-1][int(s)-1]=int(w)
+print("Adjacency Matrix Representation:")
+for i in range(nd):
+  for j in range(ed):
+    print(l[i][j],end=" ")
+  print()
+  
