@@ -95,10 +95,10 @@ c=input("Is the graph directed\n")
 l=[]
 print("Adjacency Matrix Representation:")
 for i in range(nd):
-  l1=[0]*ed
+  l1=[0]*nd
   l.append(l1)
 for i in range(nd):
-  for j in range(ed):
+  for j in range(nd):
     print(l[i][j],end=" ")
   print()
 for i in range(ed):
@@ -110,7 +110,7 @@ for i in range(ed):
     l[int(e)-1][int(s)-1]=int(w)
 print("Adjacency Matrix Representation:")
 for i in range(nd):
-  for j in range(ed):
+  for j in range(nd):
     print(l[i][j],end=" ")
   print()
   
